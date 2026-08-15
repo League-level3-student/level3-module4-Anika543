@@ -34,15 +34,48 @@ import java.util.ArrayDeque;
 
 public class _02_BaseballTickets {
 
-    public static int calculateWaitTime( ArrayDeque<Integer> ticketsQueue, int position ) {
-        //Create a queue
-    	//have a counter for the time
-    	//remove 1 from the value of the poeple at the front of the line and move them to the back
-    	//if someones value gets to 0 they get removed from the queue
-    	//track my friend and end the counter when they reach 0
-    	
-    	
-    	
-        return -1;
-    }
+	public static int calculateWaitTime(ArrayDeque<Integer> ticketsQueue, int position) {
+
+		int counter = 0;
+
+
+		while (true) {
+			if(position==0 && ticketsQueue.getFirst()==1) {
+				counter++; 
+				return counter; 
+			}
+			
+			else if(position==0 && ticketsQueue.getFirst()>1) {
+				position = ticketsQueue.size()-1; 
+			}
+			else {
+				position--; 
+			}
+
+			if (ticketsQueue.getFirst() == 1) {
+				ticketsQueue.remove();
+				ticketsQueue.add(0);
+				counter++; 
+			
+			} 
+			else if(ticketsQueue.getFirst() == 0) {
+				ticketsQueue.remove();
+				ticketsQueue.add(0); 
+			}
+			else {
+				ticketsQueue.add(ticketsQueue.remove() - 1);
+				counter++;
+			}
+			
+		}
+
+		// have a counter for the time
+		// remove 1 from the value of the poeple at the front of the line and move them
+		// to the back
+		// if someones value gets to 0 they get removed from the queue
+		// track my friend and end the counter when they reach 0
+
+		// 0 0 1 0 0
+
+	}
 }
